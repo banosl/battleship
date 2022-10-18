@@ -55,4 +55,17 @@ RSpec.describe Ship do
 
         end
 
+    #Test 6
+        it 'Cruisers health dropped by 1' do
+
+            cruiser = Ship.new("Cruiser", 3)
+
+            cruiser.hit
+
+            cruiser.health
+
+            expect(cruiser.health).to eq(2)
+
+        end
+
 end
