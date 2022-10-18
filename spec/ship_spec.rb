@@ -80,4 +80,21 @@ RSpec.describe Ship do
 
             expect(cruiser.health).to eq(1)
         end
+
+    #Test 8
+        it 'The ship is not sunk after being hit twice' do
+
+            cruiser = Ship.new("Cruiser", 3)
+
+            cruiser.hit
+            cruiser.hit
+
+            cruiser.health
+
+            cruiser.sunk?
+
+            expect(cruise.sunk?).to be false
+
+        end
+
 end
