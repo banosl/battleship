@@ -16,8 +16,21 @@ RSpec.describe Ship do
 
             cruiser = Ship.new("Cruiser", 3)
 
+            cruiser.name
+
             expect(cruiser.name).to eq("Cruiser")
 
         end
+
+    #Test 3
+        it 'cruisers length is 3' do
+
+            cruiser = Ship.new("Cruiser", 3)
+
+            cruiser.length
+
+            expect(cruiser.length).to eq(3)
+
+        end 
 
 end
