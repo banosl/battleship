@@ -44,4 +44,15 @@ RSpec.describe Ship do
 
         end
 
+    #Test 5
+        it 'Was cruiser sunken?' do
+
+            cruiser = Ship.new("Cruiser", 3)
+
+            cruiser.sunk?
+
+            expect(cruiser.sunk?).to be false
+
+        end
+
 end
