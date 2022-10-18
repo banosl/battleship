@@ -30,8 +30,7 @@ RSpec.describe Ship do
             cruiser.length
 
             expect(cruiser.length).to eq(3)
-
-        end 
+end
 
     #Test 4
         it 'cruisers health is 3' do
@@ -67,7 +66,7 @@ RSpec.describe Ship do
             expect(cruiser.health).to eq(2)
 
         end
-    
+
     #Test 7
         it 'Cruisers health dropped by 2' do
 
@@ -109,7 +108,5 @@ RSpec.describe Ship do
             cruiser.sunk?
 
             expect(cruiser.sunk?).to be true
-            
         end
-
-end
+     end
