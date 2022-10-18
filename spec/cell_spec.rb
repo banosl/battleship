@@ -1,5 +1,6 @@
 require 'RSpec'
 require './lib/cell'
+require './lib/ship'
 
 RSpec.describe Cell do
 
@@ -22,7 +23,7 @@ RSpec.describe Cell do
       cell.place_ship(cruiser)
 
       expect(cell.empty?).to eq(false)
-      expect(cell.ship).to eq(ship)
+      expect(cell.ship).to eq(cruiser)
     end
   end
 
@@ -47,13 +48,13 @@ RSpec.describe Cell do
       cell_2 = Cell.new("A2")
 
       cell_3 = Cell.new("C3")
-      sub = ship.new("Submarine", 2)
+      sub = Ship.new("Submarine", 2)
       cell_3.place_ship(sub)
       cell_3.fire_upon
       cell_3.fire_upon
 
       cell_4 = Cell.new("D1")
-      carrier = ship.new("Aircraft Carrier", 4)
+      carrier = Ship.new("Aircraft Carrier", 4)
       cell_4.place_ship(carrier)
       cell_4.fire_upon
 
