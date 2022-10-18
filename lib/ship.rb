@@ -11,8 +11,7 @@ class Ship
 
     def sunk?
 
-        if health == 0
-        end
+        health == 0
 
     end
 
