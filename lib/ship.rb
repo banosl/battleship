@@ -12,7 +12,7 @@ class Ship
     #Method for checking if the ships' health points reached 0
     def sunk?
 
-        health == 0
+        health <= 0
 
     end
 
