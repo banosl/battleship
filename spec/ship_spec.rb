@@ -100,7 +100,7 @@ RSpec.describe Ship do
     #Test 9
         it 'Cruiser is sunk after being hit 3 times' do
 
-            ruiser = Ship.new("Cruiser", 3)
+            cruiser = Ship.new("Cruiser", 3)
 
             cruiser.hit
             cruiser.hit
