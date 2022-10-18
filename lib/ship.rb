@@ -16,4 +16,11 @@ class Ship
 
     end
 
+    #Method for reducing ship health points by 1
+    def hit
+        
+        @health = (health - 1)
+
+    end
+
 end
