@@ -1,3 +1,6 @@
+require './lib/ship'
+require './lib/cell'
+
 class Board
 
   attr_reader :cells
@@ -32,17 +35,35 @@ class Board
 
   def valid_placement?(ship, cells)
 
+    letters = cells.map do |cell|
+      cell.coordinate[0]
+    end
+    nums = cells.map do |cell|
+      cell.coordinate[1]
+    end
+
     if (ship.length != cells.count)
       return false
     end
 
-    cell.each do |cell|
-      if !cell.valid_coordinate?
+    cells.each do |cell|
+      if !self.valid_coordinate?(cell.coordinate) || !cell.empty?
         return false
       end
     end
 
-    
+    if letters.uniq.count == 1
+      if ("1".."4").each_cons(cells.count).include?(nums)
+        return true
+      end
+    end
+
+    if nums.uniq.count == 1
+      if ("A".."B").each_cons(cells.count).include?(letters)
+        return true
+      end
+    end
+    false
   end
 
 
