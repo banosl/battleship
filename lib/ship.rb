@@ -9,6 +9,7 @@ class Ship
         @health = length
     end
 
+    #Method for checking if the ships' health points reached 0
     def sunk?
 
         health == 0
