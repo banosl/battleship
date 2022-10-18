@@ -2,12 +2,12 @@ require './lib/ship'
 
 RSpec.describe Ship do
 
-#Test 1
-    it 'cruiser exists' do
+    #Test 1
+        it 'cruiser exists' do
 
-        cruiser = Ship.new("Cruiser", 3)
+            cruiser = Ship.new("Cruiser", 3)
 
-        expect(cruiser).to be_instance_of(Ship)
+            expect(cruiser).to be_instance_of(Ship)
 
     end
 
