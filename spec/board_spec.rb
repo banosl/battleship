@@ -110,9 +110,9 @@ RSpec.describe Board do
         submarine = Ship.new("Submarine", 2)
 
 
-        expect(board.valid_placement?(cruiser [board.cells["A1"], board.cells["B2"], board.cells["B3"]])).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["A1"], board.cells["B2"], board.cells["B3"]])).to be(false)
 
-        expect(board.valid_placement?(submarine, [board.cells["C2"], board.cells["D3"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C2"], board.cells["D3"]])).to be(false)
 
     end
 
@@ -186,7 +186,7 @@ RSpec.describe Board do
 
 #Test 13
 
-    xit 'A board renders without displaying ship placements' do
+    it 'A board renders without displaying ship placements' do
 
 
         board = Board.new
@@ -194,7 +194,7 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
 
 
-        board.place(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
 
         board.render
@@ -210,7 +210,7 @@ RSpec.describe Board do
 
 #Test 14
 
-    xit 'A board renders true with ship placements' do
+    it 'A board renders true with ship placements' do
 
 
         board = Board.new
@@ -218,10 +218,10 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
 
 
-        board.place(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
 
-        board.render(true)
+
 
         expect(board.render(true)).to eq(
         "  1 2 3 4 \n" +
@@ -234,7 +234,7 @@ RSpec.describe Board do
 
 #Test 15
 
-    xit 'A board renders with a ship being hit' do
+    it 'A board renders with a ship being hit' do
 
 
         board = Board.new
@@ -242,18 +242,16 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
 
 
-        board.place(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
 
-        cell_1 = board.cells("A1")
-        cell_2 = board.cells("A2")
-        cell_3 = board.cells("A3")
 
-        cell_1.fire_upon
-        cell_2.fire_upon
 
-        board.render
+        board.cells["A1"].fire_upon
+        board.cells["A2"].fire_upon
 
+
+        
         expect(board.render).to eq(
         "  1 2 3 4 \n" +
         "A H H . . \n" +
@@ -265,4 +263,3 @@ RSpec.describe Board do
 
 
 end
-
