@@ -128,15 +128,15 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(cruiser, ["A1", "A2", "A4"])
-        board.valid_placement?(submarine, ["A1", "C1"])
-        board.valid_placement?(cruiser, ["A3", "A2", "A1"])
-        board.valid_placement?(submarine, ["C1", "B1"])
+        board.valid_placement?(cruiser, [board.cells["A1"], board.cells["A2"],board.cells["A4"]])
+        board.valid_placement?(submarine, [board.cells["A1"],board.cells["C1"]])
+        board.valid_placement?(cruiser, [board.cells["A3"], board.cells["A2"], board.cells["A1"]])
+        board.valid_placement?(submarine, [board.cells["C1"], board.cells["B1"]])
 
-        expect(board.valid_placement?(cruiser, ["A1", "A2", "A4"])).to be false
-        expect(board.valid_placement?(submarine, ["A1", "C1"])).to be false
-        expect(board.valid_placement?(cruiser, ["A3", "A2", "A1"])).to be false
-        expect(board.valid_placement?(submarine, ["C1", "B1"])).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A4"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["C1"]])).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["A3"], board.cells["A2"], board.cells["A1"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C1"], board.cells["B1"]])).to be false
 
     end
 
@@ -148,11 +148,11 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(cruiser ["A1", "B2", "B3"])
-        board.valid_placement?(submarine, ["C2", "D3"])
+        board.valid_placement?(cruiser [board.cells["A1"], board.cells["B2"], board.cells["B3"]])
+        board.valid_placement?(submarine, [board.cells["C2"], board.cells["D3"]])
 
-        expect(board.valid_placement?(cruiser ["A1", "B2", "B3"])).to be false
-        expect(board.valid_placement?(submarine, ["C2", "D3"])).to be false
+        expect(board.valid_placement?(cruiser [board.cells["A1"], board.cells["B2"], board.cells["B3"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C2"], board.cells["D3"]])).to be false
 
     end
 
@@ -164,11 +164,11 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, ["A1", "A2"])
-        board.valid_placement?(cruiser, ["B1", "C1", "D1"])
+        board.valid_placement?(submarine, [board.cells["A1"], board.cells["A2"]])
+        board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])
 
-        expect(board.valid_placement?(submarine, ["A1", "A2"])).to be true
-        expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to be true
+        expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["A2"]])).to be true
+        expect(board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])).to be true
 
     end
 
@@ -231,11 +231,11 @@ RSpec.describe Board do
 
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, ["A1", "B1"])
-        board.valid_placement?(submarine, ["C1", "C2"])
+        board.valid_placement?(submarine, [board.cells["A1"], board.cells["B1"]])
+        board.valid_placement?(submarine, [board.cells["C1"], board.cells["C2"]])
 
-        expect(board.valid_placement?(submarine, ["A1", "B1"])).to be false
-        expect(board.valid_placement?(submarine, ["C1", "C2"])).to be true
+        expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["B1"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C1"], board.cells["C2"]])).to be true
 
     end
 
