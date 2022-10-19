@@ -140,4 +140,20 @@ RSpec.describe Board do
 
     end
 
+#Test 8
+    it 'coordinates for ships are consecutive but cant be diagonal' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+        submarine = Ship.new("Submarine", 2)
+
+        board.valid_placement?(cruiser ["A1", "B2", "B3"])
+        board.valid_placement?(submarine, ["C2", "D3"])
+
+        expect(board.valid_placement?(cruiser ["A1", "B2", "B3"])).to be false
+        expect(board.valid_placement?(submarine, ["C2", "D3"])).to be false
+
+    end
+
 end
