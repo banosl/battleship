@@ -19,22 +19,22 @@ RSpec.describe Board do
        
         board = Board.new
 
-        cell_1 = board.cells("A1")
-        cell_2 = board.cells("A2")
-        cell_3 = board.cells("A3")
-        cell_4 = board.cells("A4")
-        cell_5 = board.cells("B1")
-        cell_6 = board.cells("B2")
-        cell_7 = board.cells("B3")
-        cell_8 = board.cells("B4")
-        cell_9 = board.cells("C1")
-        cell_10 = board.cells("C2")
-        cell_11 = board.cells("C3")
-        cell_12 = board.cells("C4")
-        cell_13 = board.cells("D1")
-        cell_14 = board.cells("D2")
-        cell_15 = board.cells("D3")
-        cell_16 = board.cells("D4")
+        # cell_1 = board.cells("A1")
+        # cell_2 = board.cells("A2")
+        # cell_3 = board.cells("A3")
+        # cell_4 = board.cells("A4")
+        # cell_5 = board.cells("B1")
+        # cell_6 = board.cells("B2")
+        # cell_7 = board.cells("B3")
+        # cell_8 = board.cells("B4")
+        # cell_9 = board.cells("C1")
+        # cell_10 = board.cells("C2")
+        # cell_11 = board.cells("C3")
+        # cell_12 = board.cells("C4")
+        # cell_13 = board.cells("D1")
+        # cell_14 = board.cells("D2")
+        # cell_15 = board.cells("D3")
+        # cell_16 = board.cells("D4")
 
 
         expect(board.cells)to eq({"A1" => cellobject, ...})
@@ -48,28 +48,28 @@ RSpec.describe Board do
 
         board = Board.new
 
-        cell_1 = board.cells("A1")
-        cell_2 = board.cells("A2")
-        cell_3 = board.cells("A3")
-        cell_4 = board.cells("A4")
-        cell_5 = board.cells("B1")
-        cell_6 = board.cells("B2")
-        cell_7 = board.cells("B3")
-        cell_8 = board.cells("B4")
-        cell_9 = board.cells("C1")
-        cell_10 = board.cells("C2")
-        cell_11 = board.cells("C3")
-        cell_12 = board.cells("C4")
-        cell_13 = board.cells("D1")
-        cell_14 = board.cells("D2")
-        cell_15 = board.cells("D3")
-        cell_16 = board.cells("D4")
+        # cell_1 = board.cells("A1")
+        # cell_2 = board.cells("A2")
+        # cell_3 = board.cells("A3")
+        # cell_4 = board.cells("A4")
+        # cell_5 = board.cells("B1")
+        # cell_6 = board.cells("B2")
+        # cell_7 = board.cells("B3")
+        # cell_8 = board.cells("B4")
+        # cell_9 = board.cells("C1")
+        # cell_10 = board.cells("C2")
+        # cell_11 = board.cells("C3")
+        # cell_12 = board.cells("C4")
+        # cell_13 = board.cells("D1")
+        # cell_14 = board.cells("D2")
+        # cell_15 = board.cells("D3")
+        # cell_16 = board.cells("D4")
 
-        board.valid_coordinate?("A1")
-        board.valid_coordinate?("D4")
-        board.valid_coordinate?("A5")
-        board.valid_coordinate?("E1")
-        board.valid_coordinate?("A22")
+        # board.valid_coordinate?("A1")
+        # board.valid_coordinate?("D4")
+        # board.valid_coordinate?("A5")
+        # board.valid_coordinate?("E1")
+        # board.valid_coordinate?("A22")
 
         expect(board.valid_coordinate?("A1")).to be true
         expect(board.valid_coordinate?("D4")).to be true
@@ -101,9 +101,9 @@ RSpec.describe Board do
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.valid_placement?(cruiser, ["A1","A2"])
+        board.valid_placement?(cruiser, [board.cells["A1"], board.cells["A2"]])
 
-        expect(board.valid_placement?(cruiser,["A1","A2"])).to be false
+        expect(board.valid_placement?(cruiser,[board.cells["A1"], board.cells["A2"]])).to be false
 
     end
 
@@ -114,9 +114,9 @@ RSpec.describe Board do
 
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, ["A2","A3","A4"])
+        board.valid_placement?(submarine, [board.cells["A2"],board.cells["A3"],board.cells["A4"]])
 
-        expect(board.valid_placement?(submarine,["A2","A3", "A4"])).to be false
+        expect(board.valid_placement?(submarine,[board.cells["A2"],board.cells["A3"],board.cells["A4"]]))).to be false
 
     end
 
