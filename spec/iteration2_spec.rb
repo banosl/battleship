@@ -95,7 +95,7 @@ RSpec.describe Board do
     end
 
 #Test 5
-    it 'cruiser should have 3 coordinates' do
+    it 'cruiser should have 3 coordinates to match length' do
 
         board = Board.new
 
@@ -107,4 +107,16 @@ RSpec.describe Board do
 
     end
 
+#Test 6
+    it 'submarine should have 2 coordinates to match length' do
+
+        board = Board.new
+
+        submarine = Ship.new("Submarine", 2)
+
+        board.valid_placement?(submarine, ["A2","A3","A4"])
+
+        expect(board.valid_placement?(submarine,["A2","A3", "A4"])).to be false
+
+    end
 end
