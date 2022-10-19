@@ -10,16 +10,20 @@ RSpec.describe Board do
 
         board = Board.new
 
+
         expect(board).to be_instance_of(Board)
+
 
     end
 
 #Test 2
     it 'board has 16 cells' do
 
+
         board = Board.new
 
         expect(board.cells.count).to eq(16)
+
     end
 
 #Validate Coordinates
@@ -60,8 +64,8 @@ RSpec.describe Board do
 
         cruiser = Ship.new("Cruiser", 3)
 
-
         expect(board.valid_placement?(cruiser, [board.cells["A1"],board.cells["A2"]])).to be(false)
+
 
     end
 
@@ -72,9 +76,10 @@ RSpec.describe Board do
 
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, [board.cells["A2"] ,board.cells["A3"] ,board.cells["A4"]])
+
 
         expect(board.valid_placement?(submarine,[board.cells["A2"] ,board.cells["A3"] , board.cells["A4"]])).to be false
+
 
     end
 
@@ -86,20 +91,18 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
         submarine = Ship.new("Submarine", 2)
 
-        bool_1 = board.valid_placement?(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A4"]])
-        bool_2 = board.valid_placement?(submarine, [board.cells["A1"], board.cells["C1"]])
-        bool_3 = board.valid_placement?(cruiser, [board.cells["A3"], board.cells["A2"], board.cells["A1"]])
-        bool_4 = board.valid_placement?(submarine, [board.cells["C1"], board.cells["B1"]])
 
-        expect(bool_1).to be false
-        expect(bool_2).to be false
-        expect(bool_3).to be false
-        expect(bool_4).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A4"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["C1"]])).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["A3"], board.cells["A2"], board.cells["A1"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C1"], board.cells["B1"]])).to be false
 
     end
 
 #Test 8
-  it 'coordinates for ships are consecutive but cant be diagonal' do
+
+    it 'coordinates for ships are consecutive but cant be diagonal' do
+
 
         board = Board.new
 
@@ -107,8 +110,8 @@ RSpec.describe Board do
         submarine = Ship.new("Submarine", 2)
 
 
+        expect(board.valid_placement?(cruiser [board.cells["A1"], board.cells["B2"], board.cells["B3"]])).to be false
 
-        expect(board.valid_placement?(cruiser, [board.cells["A1"], board.cells["B2"], board.cells["B3"]])).to be false
         expect(board.valid_placement?(submarine, [board.cells["C2"], board.cells["D3"]])).to be false
 
     end
@@ -137,9 +140,11 @@ RSpec.describe Board do
 
         board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
+
         expect(board.cells["A1"].empty?).to eq(false)
         expect(board.cells["A2"].empty?).to eq(false)
         expect(board.cells["A3"].empty?).to eq(false)
+
     end
 
 #Test 11
@@ -153,8 +158,10 @@ RSpec.describe Board do
 
 
 
+
         expect(board.cells["A1"].ship).to eq(board.cells["A2"].ship)
         expect(board.cells["A1"].ship).to eq(board.cells["A3"].ship)
+
     end
 
 #Overlapping Ships
@@ -178,13 +185,17 @@ RSpec.describe Board do
 #Rendering the Board
 
 #Test 13
+
     xit 'A board renders without displaying ship placements' do
+
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
 
         board.render
 
@@ -198,13 +209,17 @@ RSpec.describe Board do
     end
 
 #Test 14
+
     xit 'A board renders true with ship placements' do
+
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
 
         board.render(true)
 
@@ -218,13 +233,17 @@ RSpec.describe Board do
     end
 
 #Test 15
+
     xit 'A board renders with a ship being hit' do
+
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
 
         cell_1 = board.cells("A1")
         cell_2 = board.cells("A2")
@@ -244,4 +263,6 @@ RSpec.describe Board do
 
     end
 
+
 end
+
