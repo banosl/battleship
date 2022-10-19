@@ -281,4 +281,15 @@ RSpec.describe Board do
 
     end
 
+#Test 15
+    it 'A board renders with a ship being hit' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
+    end
+
 end
