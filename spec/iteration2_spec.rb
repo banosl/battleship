@@ -1,4 +1,5 @@
 require './lib/board'
+require './lib/ship'
 
 RSpec.describe Board do
 
@@ -78,6 +79,20 @@ RSpec.describe Board do
 
     end
 
+#Validate Placements
+
+#Test 4
+    it 'cruiser and submarine exist' do
+    
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+        submarine = Ship.new("Submarine", 2)
+
+        expect(cruiser).to be_instance_of(Ship)
+        expect(submarine).to be_instance_of(Ship)
+
+    end
 
 
 end
