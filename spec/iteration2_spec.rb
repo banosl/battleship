@@ -239,5 +239,26 @@ RSpec.describe Board do
 
     end
 
+#Rendering the Board
+
+#Test 13
+    it 'A board renders without displaying ship placements' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
+        board.render
+
+        expect(board.render).to eq(
+        "  1 2 3 4 \n" +
+        "A . . . . \n" +
+        "B . . . . \n" +
+        "C . . . . \n" +
+        "D . . . . \n")
+
+    end
 
 end
