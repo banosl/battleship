@@ -19,22 +19,22 @@ RSpec.describe Board do
        
         board = Board.new
 
-        board.cells("A1")
-        board.cells("A2")
-        board.cells("A3")
-        board.cells("A4")
-        board.cells("B1")
-        board.cells("B2")
-        board.cells("B3")
-        board.cells("B4")
-        board.cells("C1")
-        board.cells("C2")
-        board.cells("C3")
-        board.cells("C4")
-        board.cells("D1")
-        board.cells("D2")
-        board.cells("D3")
-        board.cells("D4")
+        cell_1 = board.cells("A1")
+        cell_2 = board.cells("A2")
+        cell_3 = board.cells("A3")
+        cell_4 = board.cells("A4")
+        cell_5 = board.cells("B1")
+        cell_6 = board.cells("B2")
+        cell_7 = board.cells("B3")
+        cell_8 = board.cells("B4")
+        cell_9 = board.cells("C1")
+        cell_10 = board.cells("C2")
+        cell_11 = board.cells("C3")
+        cell_12 = board.cells("C4")
+        cell_13 = board.cells("D1")
+        cell_14 = board.cells("D2")
+        cell_15 = board.cells("D3")
+        cell_16 = board.cells("D4")
 
 
         expect(board.cells)to eq({"A1" => cellobject, ...})
@@ -48,22 +48,22 @@ RSpec.describe Board do
 
         board = Board.new
 
-        board.cells("A1")
-        board.cells("A2")
-        board.cells("A3")
-        board.cells("A4")
-        board.cells("B1")
-        board.cells("B2")
-        board.cells("B3")
-        board.cells("B4")
-        board.cells("C1")
-        board.cells("C2")
-        board.cells("C3")
-        board.cells("C4")
-        board.cells("D1")
-        board.cells("D2")
-        board.cells("D3")
-        board.cells("D4")
+        cell_1 = board.cells("A1")
+        cell_2 = board.cells("A2")
+        cell_3 = board.cells("A3")
+        cell_4 = board.cells("A4")
+        cell_5 = board.cells("B1")
+        cell_6 = board.cells("B2")
+        cell_7 = board.cells("B3")
+        cell_8 = board.cells("B4")
+        cell_9 = board.cells("C1")
+        cell_10 = board.cells("C2")
+        cell_11 = board.cells("C3")
+        cell_12 = board.cells("C4")
+        cell_13 = board.cells("D1")
+        cell_14 = board.cells("D2")
+        cell_15 = board.cells("D3")
+        cell_16 = board.cells("D4")
 
         board.valid_coordinate?("A1")
         board.valid_coordinate?("D4")
@@ -289,6 +289,22 @@ RSpec.describe Board do
         cruiser = Ship.new("Cruiser", 3)
 
         board.place_ship(cruiser, ["A1", "A2", "A3"])
+
+        cell_1 = board.cells("A1")
+        cell_2 = board.cells("A2")
+        cell_3 = board.cells("A3")
+
+        cell_1.fire_upon
+        cell_2.fire_upon
+
+        board.render
+
+        expect(board.render).to eq(
+        "  1 2 3 4 \n" +
+        "A H H . . \n" +
+        "B . . . . \n" +
+        "C . . . . \n" +
+        "D . . . . \n")
 
     end
 
