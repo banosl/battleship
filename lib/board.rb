@@ -33,6 +33,7 @@ class Board
     @cells.has_key?(coordinate)
   end
 
+
   def valid_placement?(ship, cells)
 
     letters = cells.map do |cell|
@@ -67,6 +68,21 @@ class Board
   end
 
 
-  def place
+  def place(ship, cells)
+    if self.valid_placement?(ship, cells)
+      cells.each do |cell|
+        cell.place_ship(ship)
+      end
+    end
+  end
+
+  def render
+    board_string =
+    "  1 2 3 4 \n" +
+    "A . . . . \n" +
+    "B . . . . \n" +
+    "C . . . . \n" +
+    "D . . . . \n"
+  end
 
 end
