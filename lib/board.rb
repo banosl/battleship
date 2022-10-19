@@ -67,4 +67,6 @@ class Board
   end
 
 
+  def place
+
 end
