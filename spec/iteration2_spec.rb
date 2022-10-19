@@ -156,4 +156,20 @@ RSpec.describe Board do
 
     end
 
+#Test 9
+    it 'coordinates are valid' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+        submarine = Ship.new("Submarine", 2)
+
+        board.valid_placement?(submarine, ["A1", "A2"])
+        board.valid_placement?(cruiser, ["B1", "C1", "D1"])
+
+        expect(board.valid_placement?(submarine, ["A1", "A2"])).to be true
+        expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to be true
+
+    end
+
 end
