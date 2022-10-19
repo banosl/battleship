@@ -218,5 +218,26 @@ RSpec.describe Board do
 
     end
 
+#Overlapping Ships
+
+#Test 12
+    it 'The submarine cant be placed on the same cells as the cruiser' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
+        submarine = Ship.new("Submarine", 2)
+
+        board.valid_placement?(submarine, ["A1", "B1"])
+        board.valid_placement?(submarine, ["C1", "C2"])
+
+        expect(board.valid_placement?(submarine, ["A1", "B1"])).to be false
+        expect(board.valid_placement?(submarine, ["C1", "C2"])).to be true
+
+    end
+
 
 end
