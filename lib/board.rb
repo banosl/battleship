@@ -60,7 +60,7 @@ class Board
     end
 
     if nums.uniq.count == 1
-      if ("A".."B").each_cons(cells.count).include?(letters)
+      if ("A".."D").each_cons(cells.count).include?(letters)
         return true
       end
     end
@@ -77,12 +77,7 @@ class Board
   end
 
   def render
-    board_string =
-    "  1 2 3 4 \n" +
-    "A . . . . \n" +
-    "B . . . . \n" +
-    "C . . . . \n" +
-    "D . . . . \n"
+
   end
 
 end

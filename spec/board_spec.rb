@@ -122,14 +122,14 @@ RSpec.describe Board do
         submarine = Ship.new("Submarine", 2)
 
         expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["A2"]])).to be true
-        expect(board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])).to be false
+        expect(board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])).to be true
 
     end
 
 #Placing Ships
 
 #Test 10
-    xit 'Ships are placed on the board and cells exist' do
+    it 'Ships are placed on the board and cells exist' do
 
         board = Board.new
 
@@ -138,7 +138,8 @@ RSpec.describe Board do
         board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
         expect(board.cells["A1"].empty?).to eq(false)
-
+        expect(board.cells["A2"].empty?).to eq(false)
+        expect(board.cells["A3"].empty?).to eq(false)
     end
 
 #Test 11
@@ -153,26 +154,24 @@ RSpec.describe Board do
 
 
         expect(board.cells["A1"].ship).to eq(board.cells["A2"].ship)
+        expect(board.cells["A1"].ship).to eq(board.cells["A3"].ship)
     end
 
 #Overlapping Ships
 
 #Test 12
-    xit 'The submarine cant be placed on the same cells as the cruiser' do
+    it 'The submarine cant be placed on the same cells as the cruiser' do
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, ["A1", "B1"])
-        board.valid_placement?(submarine, ["C1", "C2"])
-
-        expect(board.valid_placement?(submarine, ["A1", "B1"])).to be false
-        expect(board.valid_placement?(submarine, ["C1", "C2"])).to be true
+        expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["B1"]])).to be false
+        expect(board.valid_placement?(submarine, [board.cells["C1"], board.cells["C2"]])).to be true
 
     end
 
