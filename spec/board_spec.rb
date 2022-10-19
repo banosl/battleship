@@ -19,26 +19,7 @@ RSpec.describe Board do
 
         board = Board.new
 
-        # cell_1 = board.cells("A1")
-        # cell_2 = board.cells("A2")
-        # cell_3 = board.cells("A3")
-        # cell_4 = board.cells("A4")
-        # cell_5 = board.cells("B1")
-        # cell_6 = board.cells("B2")
-        # cell_7 = board.cells("B3")
-        # cell_8 = board.cells("B4")
-        # cell_9 = board.cells("C1")
-        # cell_10 = board.cells("C2")
-        # cell_11 = board.cells("C3")
-        # cell_12 = board.cells("C4")
-        # cell_13 = board.cells("D1")
-        # cell_14 = board.cells("D2")
-        # cell_15 = board.cells("D3")
-        # cell_16 = board.cells("D4")
-
-
         expect(board.cells.count).to eq(16)
-
     end
 
 #Validate Coordinates
@@ -133,18 +114,15 @@ RSpec.describe Board do
     end
 
 #Test 9
-    xit 'coordinates are valid' do
+    it 'coordinates are valid' do
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
         submarine = Ship.new("Submarine", 2)
 
-        board.valid_placement?(submarine, [board.cells["A1"], board.cells["A2"]])
-        board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])
-
         expect(board.valid_placement?(submarine, [board.cells["A1"], board.cells["A2"]])).to be true
-        expect(board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])).to be true
+        expect(board.valid_placement?(cruiser, [board.cells["B1"], board.cells["C1"], board.cells["D1"]])).to be false
 
     end
 
@@ -157,41 +135,24 @@ RSpec.describe Board do
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
-        cell_1 = board.cells["A1"]
-        cell_2 = board.cells["A2"]
-        cell_3 = board.cells["A3"]
-
-        expect(cell_1).to be_instance_of(Cell)
-        expect(cell_2).to be_instance_of(Cell)
-        expect(cell_3).to be_instance_of(Cell)
+        expect(board.cells["A1"].empty?).to eq(false)
 
     end
 
 #Test 11
-    xit 'The identified cells have the same ship object' do
+    it 'The identified cells have the same ship object' do
 
         board = Board.new
 
         cruiser = Ship.new("Cruiser", 3)
 
-        board.place_ship(cruiser, ["A1", "A2", "A3"])
+        board.place(cruiser, [board.cells["A1"], board.cells["A2"], board.cells["A3"]])
 
-        cell_1 = board.cells["A1"]
-        cell_2 = board.cells["A2"]
-        cell_3 = board.cells["A3"]
 
-        cell_1.ship
-        cell_2.ship
-        cell_3.ship
 
-        cell_3.ship == cell_2.ship
-        cell_1.ship == cell_2.ship
-
-        expect(cell_3.ship == cell_2.ship).to be true
-        expect(cell_1.ship == cell_2.ship).to be true
-
+        expect(board.cells["A1"].ship).to eq(board.cells["A2"].ship)
     end
 
 #Overlapping Ships
