@@ -261,4 +261,24 @@ RSpec.describe Board do
 
     end
 
+#Test 14
+    it 'A board renders true with ship placements' do
+
+        board = Board.new
+
+        cruiser = Ship.new("Cruiser", 3)
+
+        board.place(cruiser, ["A1", "A2", "A3"])
+
+        board.render(true)
+
+        expect(board.render(true)).to eq(
+        "  1 2 3 4 \n" +
+        "A S S S . \n" +
+        "B . . . . \n" +
+        "C . . . . \n" +
+        "D . . . . \n")
+
+    end
+
 end
