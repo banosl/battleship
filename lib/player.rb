@@ -23,6 +23,7 @@ class Player
     sub_placed = false
 
     puts "Enter the squares for the Cruiser (3 spaces):"
+    user_cells = []
     while (!cruiser_placed)
       input = gets.chomp
       user_coordinates = input.split(" ")
