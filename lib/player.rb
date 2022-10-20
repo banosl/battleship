@@ -1,3 +1,5 @@
+require './lib/board'
+
 class Player
 
   def initialize
@@ -8,7 +10,7 @@ class Player
   end
 
 
-  def player_welcome
+  def welcome
 
     "I have laid out my ships on the grid.\n" +
     "You now need to lay out your two ships.\n" +
@@ -31,9 +33,9 @@ class Player
         @board.cells[coordinate]
       end
 
-      if (@board.valid_placement(@ships[0], user_cells))
-        board.place(@ship[0], user_cells)
-        puts board.render(true)
+      if (@board.valid_placement?(@ships[0], user_cells))
+        @board.place(@ships[0], user_cells)
+        puts @board.render(true)
         cruiser_placed = true
       else
         puts "Those are invalid coordinates. Please try again:"
@@ -48,9 +50,9 @@ class Player
         @board.cells[coordinate]
       end
 
-      if (@board.valid_placement(@ships[1], user_cells))
-        board.place(@ship[1], user_cells)
-        puts board.render(true)
+      if (@board.valid_placement?(@ships[1], user_cells))
+        @board.place(@ships[1], user_cells)
+        puts @board.render(true)
         sub_placed = true
       else
         puts "Those are invalid coordinates. Please try again:"
