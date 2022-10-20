@@ -21,7 +21,7 @@ RSpec.describe Board do
 
 
         board = Board.new
-
+require 'pry'; binding.pry
         expect(board.cells.count).to eq(16)
 
     end
