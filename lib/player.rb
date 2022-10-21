@@ -53,7 +53,7 @@ class Player
 
 
   def take_turn
-
+    
   end
 
 
