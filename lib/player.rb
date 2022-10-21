@@ -8,7 +8,7 @@ class Player
   end
 
 
-  def player_welcome
+  def welcome
 
     "I have laid out my ships on the grid.\n" +
     "You now need to lay out your two ships.\n" +
@@ -19,43 +19,40 @@ class Player
 
 
   def place_ships
-    cruiser_placed = false
-    sub_placed = false
 
-    puts "Enter the squares for the Cruiser (3 spaces):"
-    while (!cruiser_placed)
-      input = gets.chomp
-      user_coordinates = input.split(" ")
-      user_cells = user_coordinates.map do |coordinate|
-        @board.cells[coordinate]
-      end
+    @ships.each do |ship|
+      ship_placed = false
+      puts "Enter the squares for the #{ship.name} (#{ship.length} spaces):"
 
-      if (@board.valid_placement(@ships[0], user_cells))
-        board.place(@ship[0], user_cells)
-        puts board.render(true)
-        cruiser_placed = true
-      else
-        puts "Those are invalid coordinates. Please try again:"
-      end
-    end
+      while (!ship_placed)
+        input = gets.chomp
+        user_coordinates = input.split(" ")
 
-    puts "Enter the squares for the Submarine (2 spaces):"
-    while (!sub_placed)
-      input = gets.chomp
-      user_coordinates = input.split(" ")
-      user_cells = user_coordinates.map do |coordinate|
-        @board.cells[coordinate]
-      end
+        user_cells = user_coordinates.map do |coordinate|
+          @board.cells[coordinate]
+        end
 
-      if (@board.valid_placement(@ships[1], user_cells))
-        board.place(@ship[1], user_cells)
-        puts board.render(true)
-        sub_placed = true
-      else
-        puts "Those are invalid coordinates. Please try again:"
+        if (@board.valid_placement(@ships[ship], user_cells))
+          board.place(@ship[ship], user_cells)
+          puts board.render(true)
+          ship_placed = true
+        else
+          puts "Those are invalid coordinates. Please try again:"
+        end
       end
     end
   end
 
+  def take_turn
+
+
+  end
+
+
+
+  def all_ships_sunk?
+
+
+  end
 
 end
