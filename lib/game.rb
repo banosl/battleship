@@ -45,7 +45,7 @@ class Game
 
       self.display_boards
 
-      player_shot = @player.take_turn
+      player_shot = @player.random_take_turn
       computer_shot = @computer.random_take_turn
 
       player_shot_result = @comupter.take_hit(player_shot)
@@ -72,7 +72,7 @@ class Game
     user_input = gets.chomp
 
     if (user_input == "p")
-      @computer.random_place_ships
+      @computer.place_ships
 
       puts @player.welcome
       @player.place_ships

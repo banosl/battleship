@@ -66,13 +66,13 @@ class Player
 
 
   def random_take_turn
-    vaild_cells = @board.cells.map do |cell|
+    valid_coordinate = @board.cells.map do |coordinate, cell|
       if (!cell.fired_upon?)
-        cell
+        coordinate
 
       end
     end
-    random_choice = valid_cells.sample.key
+    random_choice = valid_coordinate.sample
   end
 
 
