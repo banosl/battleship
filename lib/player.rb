@@ -19,46 +19,66 @@ class Player
 
   end
 
+  def take_hit(cell_key)
+    @board[cell_key].fire_upon.render
+  end
 
   def place_ships
-    cruiser_placed = false
-    sub_placed = false
 
-    puts "Enter the squares for the Cruiser (3 spaces):"
-    user_cells = []
-    while (!cruiser_placed)
-      input = gets.chomp
-      user_coordinates = input.split(" ")
-      user_cells = user_coordinates.map do |coordinate|
-        @board.cells[coordinate]
-      end
 
-      if (@board.valid_placement?(@ships[0], user_cells))
-        @board.place(@ships[0], user_cells)
-        puts @board.render(true)
-        cruiser_placed = true
-      else
-        puts "Those are invalid coordinates. Please try again:"
-      end
-    end
+    @ships.each do |ship|
+      ship_placed = false
+      puts "Enter the squares for the #{ship.name} (#{ship.length} spaces):"
 
-    puts "Enter the squares for the Submarine (2 spaces):"
-    while (!sub_placed)
-      input = gets.chomp
-      user_coordinates = input.split(" ")
-      user_cells = user_coordinates.map do |coordinate|
-        @board.cells[coordinate]
-      end
+      while (!ship_placed)
+        input = gets.chomp
+        user_coordinates = input.split(" ")
 
-      if (@board.valid_placement?(@ships[1], user_cells))
-        @board.place(@ships[1], user_cells)
-        puts @board.render(true)
-        sub_placed = true
-      else
-        puts "Those are invalid coordinates. Please try again:"
+        user_cells = user_coordinates.map do |coordinate|
+          @board.cells[coordinate]
+        end
+
+        if (@board.valid_placement(@ships[ship], user_cells))
+          board.place(@ship[ship], user_cells)
+          puts board.render(true)
+          ship_placed = true
+        else
+          puts "Those are invalid coordinates. Please try again:"
+        end
+
       end
     end
   end
 
+
+  def random_place_ships
+
+  end
+
+
+  def take_turn
+    
+  end
+
+
+  def random_take_turn
+    vaild_cells = @board.cells.map do |cell|
+      if (!cell.fired_upon?)
+        cell
+
+      end
+    end
+    random_choice = valid_cells.sample.key
+  end
+
+
+  def all_ships_sunk?
+    ships_sunk = @ships.map do |ship|
+      if (ship.sunk?)
+        ship
+      end
+    end
+    ships_sunk.count == @ships.count
+  end
 
 end
