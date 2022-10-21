@@ -22,7 +22,8 @@ class Player
   end
 
   def take_hit(cell_key)
-    @board[cell_key].fire_upon.render
+    @board.cells[cell_key].fire_upon
+    @board.cells[cell_key].render
   end
 
   def place_ships
@@ -60,26 +61,33 @@ class Player
   end
 
 
-  def take_turn
-    
+  def take_turn(coordinates)
+    puts "Enter coordinate for your shot."
+    invalid_input = true
+
+    while invalid_input
+    input = gets.chomp
+
   end
 
 
   def random_take_turn
-    valid_coordinate = @board.cells.map do |coordinate, cell|
+    valid_coordinates = []
+    @board.cells.each do |coordinate, cell|
       if (!cell.fired_upon?)
-        coordinate
+        valid_coordinates << coordinate
 
       end
     end
-    random_choice = valid_coordinate.sample
+    random_choice = valid_coordinates.sample
   end
 
 
   def all_ships_sunk?
-    ships_sunk = @ships.map do |ship|
-      if (ship.sunk?)
-        ship
+    ships_sunk = []
+    @ships.each do |ship|
+      if (ship.sunk?) 
+        ships_sunk << ship
       end
     end
     ships_sunk.count == @ships.count

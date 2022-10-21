@@ -39,16 +39,16 @@ class Game
 
 
   def play
-    game_over = false
+    is_playing = true
 
-    while (!game_over)
+    while (is_playing)
 
       self.display_boards
 
       player_shot = @player.random_take_turn
       computer_shot = @computer.random_take_turn
 
-      player_shot_result = @comupter.take_hit(player_shot)
+      player_shot_result = @computer.take_hit(player_shot)
       computer_shot_result = @player.take_hit(computer_shot)
 
       puts turn_results("Your", player_shot, player_shot_result)
@@ -56,7 +56,7 @@ class Game
 
 
       if (@player.all_ships_sunk? || @computer.all_ships_sunk?)
-        game_over = true
+        is_playing = false
       end
     end
 
@@ -71,7 +71,7 @@ class Game
 
     user_input = gets.chomp
 
-    if (user_input == "p")
+    if (user_input == "p" || user_input == "P")
       @computer.place_ships
 
       puts @player.welcome
