@@ -1,3 +1,5 @@
+require './lib/board'
+
 class Player
 
   def initialize
@@ -23,6 +25,7 @@ class Player
 
   def place_ships
 
+
     @ships.each do |ship|
       ship_placed = false
       puts "Enter the squares for the #{ship.name} (#{ship.length} spaces):"
@@ -42,6 +45,7 @@ class Player
         else
           puts "Those are invalid coordinates. Please try again:"
         end
+
       end
     end
   end
@@ -61,6 +65,7 @@ class Player
     vaild_cells = @board.cells.map do |cell|
       if (!cell.fired_upon?)
         cell
+
       end
     end
     random_choice = valid_cells.sample.key
@@ -73,7 +78,7 @@ class Player
         ship
       end
     end
-    ships_sunk.count == @ships.conut
+    ships_sunk.count == @ships.count
   end
 
 end
