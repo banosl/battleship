@@ -17,6 +17,9 @@ class Player
 
   end
 
+  def take_hit(cell_key)
+    @board[cell_key].fire_upon.render
+  end
 
   def place_ships
 
@@ -43,16 +46,34 @@ class Player
     end
   end
 
-  def take_turn
 
+  def random_place_ships
 
   end
 
 
+  def take_turn
+
+  end
+
+
+  def random_take_turn
+    vaild_cells = @board.cells.map do |cell|
+      if (!cell.fired_upon?)
+        cell
+      end
+    end
+    random_choice = valid_cells.sample.key
+  end
+
 
   def all_ships_sunk?
-
-
+    ships_sunk = @ships.map do |ship|
+      if (ship.sunk?)
+        ship
+      end
+    end
+    ships_sunk.count == @ships.conut
   end
 
 end

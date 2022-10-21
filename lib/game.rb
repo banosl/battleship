@@ -14,6 +14,10 @@ class Game
 
   end
 
+  def turn_results(rendered_cell)
+
+  end
+
 
 
   def start
@@ -44,14 +48,18 @@ class Game
     while (!game_over)
 
       self.display_boards
-      @player.take_turn
-      @computer.take_turn
+
+      @comupter.take_hit(@player.take_turn)
+      @player.take_hit(@computer.take_turn)
+
+      
+
 
       if (@player.all_ships_sunk? || @computer.all_ships_sunk?)
         game_over = true
       end
-    end
 
+    end
     self.end_game
   end
 
