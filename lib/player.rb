@@ -1,6 +1,8 @@
 require './lib/board'
 
 class Player
+    attr_reader :board,
+                :ships
 
   def initialize
 
@@ -19,12 +21,12 @@ class Player
 
   end
 
-  def take_hit(cell_key)
-    @board[cell_key].fire_upon.render
+  def take_hit(key)
+    @board.cells[key].fire_upon
+    return @board.cells[key].render
   end
 
   def place_ships
-
 
     @ships.each do |ship|
       ship_placed = false
@@ -34,18 +36,20 @@ class Player
         input = gets.chomp
         user_coordinates = input.split(" ")
 
-        user_cells = user_coordinates.map do |coordinate|
-          @board.cells[coordinate]
+        user_cells = []
+          user_coordinates.each do |user_coordinate|
+          if @board.valid_coordinate?(user_coordinate)
+              user_cells << @board.cells[user_coordinate]
+          end
         end
 
-        if (@board.valid_placement(@ships[ship], user_cells))
-          board.place(@ship[ship], user_cells)
-          puts board.render(true)
+        if (@board.valid_placement?(ship, user_cells))
+          @board.place(ship, user_cells)
+          puts @board.render(true)
           ship_placed = true
         else
           puts "Those are invalid coordinates. Please try again:"
         end
-
       end
     end
   end
@@ -56,29 +60,47 @@ class Player
   end
 
 
-  def take_turn
-    
+  def take_shot(unfired_upon_coordinates)
+    invalid_input = true
+    puts "Enter coordinate for your shot."
+    input = ""
+    while (invalid_input)
+      input = gets.chomp
+      if (unfired_upon_coordinates.include?(input))
+        invalid_input = false
+      else
+        puts "Please enter a valid coordinate:"
+      end
+    end
+    return input
   end
 
 
-  def random_take_turn
-    vaild_cells = @board.cells.map do |cell|
-      if (!cell.fired_upon?)
-        cell
-
-      end
-    end
-    random_choice = valid_cells.sample.key
+  def random_take_shot(unfired_upon_coordinates)
+    return unfired_upon_coordinates.sample(1)[0]
   end
 
 
   def all_ships_sunk?
-    ships_sunk = @ships.map do |ship|
+    ships_sunk = []
+    @ships.each do |ship|
       if (ship.sunk?)
-        ship
+        ships_sunk << ship
       end
     end
     ships_sunk.count == @ships.count
   end
+
+
+  def coordinates_unfired_upon
+    coordinates = []
+    @board.cells.each do |coordinate, cell|
+      if (!cell.fired_upon?)
+        coordinates << coordinate
+      end
+    end
+    return coordinates
+  end
+
 
 end

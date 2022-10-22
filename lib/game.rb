@@ -45,14 +45,17 @@ class Game
 
       self.display_boards
 
-      player_shot = @player.take_turn
-      computer_shot = @computer.random_take_turn
+      player_unshot_coordinates = @player.coordinates_unfired_upon
+      computer_unshot_coordinates = @computer.coordinates_unfired_upon
 
-      player_shot_result = @comupter.take_hit(player_shot)
-      computer_shot_result = @player.take_hit(computer_shot)
+      player_shot_coordinate = @player.take_shot(computer_unshot_coordinates)
+      computer_shot_coordinate = @computer.random_take_shot(player_unshot_coordinates)
 
-      puts turn_results("Your", player_shot, player_shot_result)
-      puts turn_results("Computer", computer_shot, computer_shot_result)
+      player_shot_result = @computer.take_hit(player_shot_coordinate)
+      computer_shot_result = @player.take_hit(computer_shot_coordinate)
+
+      puts turn_results("Your", player_shot_coordinate, player_shot_result)
+      puts turn_results("Computer", computer_shot_coordinate, computer_shot_result)
 
 
       if (@player.all_ships_sunk? || @computer.all_ships_sunk?)
@@ -71,18 +74,16 @@ class Game
 
     user_input = gets.chomp
 
-    if (user_input == "p")
-      @computer.random_place_ships
+    if (user_input == "p" || user_input == "P")
+      @computer.place_ships
 
       puts @player.welcome
       @player.place_ships
-
 
       self.play
 
     else
       return
     end
-
   end
 end
