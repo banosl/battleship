@@ -16,12 +16,23 @@ RSpec.describe Player do
     it 'prints the welcome message for the player' do
       player = Player.new
       player.welcome
+
+      expect(player.welcome).to eq("I have laid out my ships on the grid.\n" +
+      "You now need to lay out your two ships.\n" +
+      "The Cruiser is three units long and the Submarine is two units long.\n" +
+      "  1 2 3 4 \n" +
+        "A . . . . \n" +
+        "B . . . . \n" +
+        "C . . . . \n" +
+        "D . . . . \n")
     end
   end
 
   #leo
   describe '#get_shot' do
-    xit 'does stuff' do
+    xit 'taking a coordinate it will fire_upon a cell and render the change' do
+      player = Player.new
+      player.get_shot("A1")
 
     end
   end
