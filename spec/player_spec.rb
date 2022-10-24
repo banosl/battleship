@@ -29,13 +29,16 @@ RSpec.describe Player do
   end
 
   #leo
-  describe '#get_shot' do
-    xit 'taking a coordinate it will fire_upon a cell and render the change' do
-      player = Player.new
-      player.get_shot("A1")
+  # describe '#get_shot' do
+  #   it 'taking a coordinate it will fire_upon a cell and render the change' do
+  #     player = Player.new
+  #     board.place("Cruiser",[board.cells["A1"], board.cells["A2"], board.cells["A3"]])
+  #     player.get_shot("A1")
 
-    end
-  end
+  #     require 'pry'; binding.pry
+  #     expect(player.get_shot("A1")).to eq("H")
+  #   end
+  # end
 
  
   # describe '#place_ships' do
@@ -46,8 +49,16 @@ RSpec.describe Player do
 
   #Leo
   describe '#random_place_ships' do
-    xit 'does stuff' do
+    it 'ships are placed randomly for the computer so we cant have a board that is just dots' do
 
+      player = Player.new
+      player.random_place_ships
+      
+      expect(player.board.render(true)).not_to include("  1 2 3 4 \n" +
+      "A . . . . \n" +
+      "B . . . . \n" +
+      "C . . . . \n" +
+      "D . . . . \n")
     end
   end
 
