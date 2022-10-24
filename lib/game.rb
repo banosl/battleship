@@ -5,17 +5,14 @@ class Game
     @player = Player.new()
   end
 
-
   def display_boards
     puts "=============COMPUTER BOARD============="
     puts @computer.board.render
     puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
-
   end
 
   def turn_results(player, cell, rendered_cell)
-
     case rendered_cell
     when "M"
       "#{player} shot on #{cell} was a miss."
@@ -26,23 +23,26 @@ class Game
     end
   end
 
+  def start
 
-  def end_game
-    if @player.all_ships_sunk?
-      puts "Computer wins."
+    puts "Welcome to BATTLESHIP \n" +
+         "Enter p to play. Enter q to quit.\n"
+    user_input = gets.chomp
+
+    if (user_input == "p" || user_input == "P")
+      @computer.place_ships
+      puts @player.welcome
+      @player.place_ships
+      self.play
     else
-      puts "You win."
+      return
     end
-
-    self.start
   end
 
-
   def play
+
     game_over = false
-
     while (!game_over)
-
       self.display_boards
 
       player_unshot_coordinates = @player.coordinates_unfired_upon
@@ -51,8 +51,8 @@ class Game
       player_shot_coordinate = @player.take_shot(computer_unshot_coordinates)
       computer_shot_coordinate = @computer.random_take_shot(player_unshot_coordinates)
 
-      player_shot_result = @computer.take_hit(player_shot_coordinate)
-      computer_shot_result = @player.take_hit(computer_shot_coordinate)
+      player_shot_result = @computer.get_shot(player_shot_coordinate)
+      computer_shot_result = @player.get_shot(computer_shot_coordinate)
 
       puts turn_results("Your", player_shot_coordinate, player_shot_result)
       puts turn_results("Computer", computer_shot_coordinate, computer_shot_result)
@@ -62,28 +62,15 @@ class Game
         game_over = true
       end
     end
-
     self.end_game
   end
 
-
-  def start
-
-    puts "Welcome to BATTLESHIP \n" +
-         "Enter p to play. Enter q to quit.\n"
-
-    user_input = gets.chomp
-
-    if (user_input == "p" || user_input == "P")
-      @computer.place_ships
-
-      puts @player.welcome
-      @player.place_ships
-
-      self.play
-
+  def end_game
+    if @player.all_ships_sunk?
+      puts "Computer wins."
     else
-      return
+      puts "You win."
     end
+    self.start
   end
 end
