@@ -2,10 +2,11 @@ require './lib/board'
 require './lib/cell'
 require './lib/ship'
 require './lib/player'
-require RSpec.describe Player do
+
+RSpec.describe Player do
 #Ryan
   describe '#initialize' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
   end
@@ -13,13 +14,14 @@ require RSpec.describe Player do
   #Leo
   describe '#welcome' do
     it 'prints the welcome message for the player' do
-      puts welcome
+      player = Player.new
+      player.welcome
     end
   end
 
   #leo
   describe '#get_shot' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
   end
@@ -33,7 +35,7 @@ require RSpec.describe Player do
 
   #Leo
   describe '#random_place_ships' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
   end
@@ -41,27 +43,27 @@ require RSpec.describe Player do
   # describe '#take_shot' do
   #   it 'does stuff' do
 
-    end
-  end
+  #   end
+  # end
 
   #Leo
   describe '#random_take_shot' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
   end
 #Ryan
   describe '#all_ships_sunk?' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
   end
 #Ryan
   describe '#coordinates_unfired_upon' do
-    it 'does stuff' do
+    xit 'does stuff' do
 
     end
-    it 'correctly returns coordinate' do
+    xit 'correctly returns coordinate' do
 
     end
   end
