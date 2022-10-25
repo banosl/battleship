@@ -4,14 +4,13 @@ require './lib/ship'
 require './lib/player'
 
 RSpec.describe Player do
-#Ryan
+
   describe '#initialize' do
     xit 'does stuff' do
 
     end
   end
 
-  #Leo
   describe '#welcome' do
     it 'prints the welcome message for the player' do
       player = Player.new
@@ -28,11 +27,9 @@ RSpec.describe Player do
     end
   end
 
-  #leo
   describe '#get_shot' do
     it 'taking a coordinate it will fire_upon a cell and return the changed cell render value' do
       player = Player.new
-     
       player.random_place_ships
 
       player.get_shot("A1")
@@ -62,18 +59,9 @@ RSpec.describe Player do
       expect(player.get_shot("B3")).not_to include("S")
     end
   end
-
  
-  # describe '#place_ships' do
-  #   it 'does stuff' do
-
-  #   end
-  # end
-
-  #Leo
   describe '#random_place_ships' do
     it 'ships are placed randomly for the computer so we cant have a board that is just dots' do
-
       player = Player.new
       player.random_place_ships
       
@@ -85,34 +73,33 @@ RSpec.describe Player do
     end
   end
 
-  # describe '#take_shot' do
-  #   it 'does stuff' do
-
-  #   end
-  # end
-
-  #Leo
   describe '#random_take_shot' do
-    xit 'does stuff' do
+    it 'computer will take a random shot and the return will mean that the cell cant be a . or S' do
+      player = Player.new
+      computer = Player.new
+      player_unshot_coordinates = player.coordinates_unfired_upon
+      computer_shot_coordinate = computer.random_take_shot(player_unshot_coordinates)
+      computer_shot_result = player.get_shot(computer_shot_coordinate)
 
+      expect(computer_shot_result).not_to include(".")
+      expect(computer_shot_result).not_to include("S")
     end
   end
-#Ryan
+
   describe '#all_ships_sunk?' do
     xit 'does stuff' do
 
     end
   end
-#Ryan
+
   describe '#coordinates_unfired_upon' do
     xit 'does stuff' do
+      
 
     end
     xit 'correctly returns coordinate' do
 
     end
   end
-
-
 
 end
