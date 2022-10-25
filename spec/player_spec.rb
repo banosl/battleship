@@ -29,16 +29,39 @@ RSpec.describe Player do
   end
 
   #leo
-  # describe '#get_shot' do
-  #   it 'taking a coordinate it will fire_upon a cell and render the change' do
-  #     player = Player.new
-  #     board.place("Cruiser",[board.cells["A1"], board.cells["A2"], board.cells["A3"]])
-  #     player.get_shot("A1")
+  describe '#get_shot' do
+    it 'taking a coordinate it will fire_upon a cell and return the changed cell render value' do
+      player = Player.new
+     
+      player.random_place_ships
 
-  #     require 'pry'; binding.pry
-  #     expect(player.get_shot("A1")).to eq("H")
-  #   end
-  # end
+      player.get_shot("A1")
+      player.get_shot("A2")
+      player.get_shot("B4")
+      player.get_shot("C3")
+      player.get_shot("D1")
+      player.get_shot("D4")
+      player.get_shot("C2")
+      player.get_shot("B3")
+
+      expect(player.get_shot("A1")).not_to include(".")
+      expect(player.get_shot("A1")).not_to include("S")
+      expect(player.get_shot("A2")).not_to include(".")
+      expect(player.get_shot("A2")).not_to include("S")
+      expect(player.get_shot("B4")).not_to include(".")
+      expect(player.get_shot("B4")).not_to include("S")
+      expect(player.get_shot("C3")).not_to include(".")
+      expect(player.get_shot("C3")).not_to include("S")
+      expect(player.get_shot("D1")).not_to include(".")
+      expect(player.get_shot("D1")).not_to include("S")
+      expect(player.get_shot("D4")).not_to include(".")
+      expect(player.get_shot("D4")).not_to include("S")
+      expect(player.get_shot("C2")).not_to include(".")
+      expect(player.get_shot("C2")).not_to include("S")
+      expect(player.get_shot("B3")).not_to include(".")
+      expect(player.get_shot("B3")).not_to include("S")
+    end
+  end
 
  
   # describe '#place_ships' do
