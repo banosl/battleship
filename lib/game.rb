@@ -7,7 +7,7 @@ class Game
 
   def display_boards
     puts "=============COMPUTER BOARD============="
-    puts @computer.board.render(true)
+    puts @computer.board.render
     puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
   end
