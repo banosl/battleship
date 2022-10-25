@@ -93,7 +93,7 @@ class Player
   #The method checks if the user input is included in the array, and if so, returns the users input.
   def take_shot(unfired_upon_coordinates)
     invalid_input = true
-    puts "Enter coordinate for your shot."
+    puts "Enter a coordinate for your shot."
     input = ""
     while (invalid_input)
       input = gets.chomp
