@@ -7,7 +7,7 @@ class Game
 
   def display_boards
     puts "=============COMPUTER BOARD============="
-    puts @computer.board.render
+    puts @computer.board.render(true)
     puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
   end
@@ -30,7 +30,7 @@ class Game
     user_input = gets.chomp
 
     if (user_input == "p" || user_input == "P")
-      @computer.place_ships
+      @computer.random_place_ships
       puts @player.welcome
       @player.place_ships
       self.play

@@ -64,7 +64,28 @@ class Player
 
  #This method randomly places the ships on a valid position of the board
   def random_place_ships
-
+    @ships.each do|ship|  
+      options = ["vertical", "horizontal"]
+      choice = options.sample(1)[0]
+      case choice 
+      when "vertical"
+          column = ("1".."4").to_a.sample(1)[0]
+          rows = ("A".."D").each_cons(ship.length).to_a.sample(1)[0]
+          cells = []
+          rows.each do|row|
+            cells << @board.cells[row + column]
+          end
+          @board.place(ship, cells)
+      when "horizontal"
+        row = ["A", "B", "C", "D"].sample(1)[0]
+        columns = ("1".."4").each_cons(ship.length).to_a.sample(1)[0]
+        cells = []
+        columns.each do|column|
+          cells << @board.cells[row + column]
+        end
+        @board.place(ship, cells)
+      end
+    end  
   end
 
   #This method will return a string representing the coordinate the player wishes
